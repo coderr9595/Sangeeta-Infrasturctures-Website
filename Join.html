@@ -1,0 +1,279 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us | SaNgeeTa InfrAstRucTures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- Add Font Awesome CSS link -->
+    <style>
+        .navbar-nav{
+    
+    gap:30px;
+
+}
+
+.nav-link{
+    position: relative;
+    
+}
+.nav-link::before,
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(116, 111, 111);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+}
+
+.nav-link::before {
+    top: -1px;
+    transform-origin: left;
+}
+
+.nav-link::after {
+    bottom: 0px;
+    transform-origin: right;
+}
+
+.nav-link:hover::before,
+.nav-link:hover::after,
+.active::before,
+.active::after {
+    transform: scaleX(1);
+}
+
+
+body {
+  position: relative;
+  min-height: 100vh;
+
+}
+body {
+     background-color: #fffbfb;
+        }
+.jumbotron h1 {
+            font-size: 32px;
+        }
+.card{
+            border: 1px solid #ccc;
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            display: inline-block;
+        }
+.card h3{
+            font-size: 24px;
+            color: #333;
+        }
+
+.card img{
+    border-radius: 15px;
+    width: 350px;
+    height: 250px;
+    
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+        <a class="navbar-brand" href="index.html">
+            <img src="sang.jpg" alt="Logo" width="50" height="40" class="d-inline-block align-top rounded-circle">
+            <em>SaNgeeTa InfrAstRucTures</em>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="About.html">About</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="Buy.html">Buy/Rent</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Join.html">Join Us </a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="Contact.html">Contact Us </a>
+              </li>
+              
+              <li class="nav-item" style="position: absolute; right: 10px;">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login/Sign Up</a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login/Sign Up</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Your login/signup form goes here -->
+                    <form onsubmit="return validateForm()">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                            <span id="errorusername" class="error"></span>   
+                          </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                            <span id="errorpassword" class="error"></span>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-secondary" style="position: absolute; left: 40%;">Login</button>
+                        <br>
+                        <br>
+                        <a class="link" href="#" style="position: absolute; left: 33%; text-decoration: none; color: grey;">Create a new Account!</a>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron text-center">
+    <br>
+    <h1 class="text-secondary" style="text-align: center;">Let Us Build Your Business</h1>
+    <p></p>
+    <h3 class="text-secondary" style="text-align: center;">Select your industry to get started.</h3>
+    <br>
+</div>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+            <img src="https://www.zillowstatic.com/bedrock/app/uploads/sites/2/2020/05/Agent-2x-1be0e4.png" alt="1">
+            <h3 class="text-secondary">I'm an agent or broker</h3>
+            <button class="btn btn-secondary " id="redirectButton1">Get Started</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+            <img src="https://www.zillowstatic.com/bedrock/app/uploads/sites/2/2020/05/Builder-2x-d8b9c6.png" alt="2">
+            <br>
+            <h3 class="text-secondary">I'm a builder</h3>
+            <button class="btn btn-secondary" id="redirectButton2">Get Started</button>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+            <img src="https://www.zillowstatic.com/bedrock/app/uploads/sites/2/2020/05/Landlord-2x-14539b.png" alt="3">
+            <br>
+            <h3 class="text-secondary">I'm a landlord</h3>
+            <button class="btn btn-secondary" id="redirectButton3">Get Started</button>        
+        </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+            <img src="https://agrimhfc.com/wp-content/uploads/2022/08/types-of-loans.png" alt="4">
+            <h3 class="text-secondary">I'm a lender or loan officer</h3>
+            <button class="btn btn-secondary" id="redirectButton4">Get Started</button>
+        </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+            <img src="https://media.designcafe.com/wp-content/uploads/2023/10/25144328/1-bhk-interior-design-cost.jpg" alt="5">
+            <h3 class="text-secondary">I'm an interior designer</h3>
+            <button class="btn btn-secondary" id="redirectButton5">Get Started</button>
+        </div></div>
+        <div class="col-md-4">
+            <div class="card">
+           <img src="https://5.imimg.com/data5/SELLER/Default/2021/10/VC/AG/DN/84609327/food-packers-and-movers-service-500x500.jpg" alt="6">
+            <h3 class="text-secondary">I'm a shipper</h3>
+            <button class="btn btn-secondary" id="redirectButton6">Get Started</button>
+        </div>
+    </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    
+    <footer class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                    <p style="color: white"><em>SaNgeeTa InfrAstRucTures</em> &copy; 2023</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <p style="color: white">&copy; 2023 Sangeeta Properties. All rights reserved. | <a href="#" style="text-decoration: none; color: oldlace;">Disclaimer</a> | <a href="#" style="text-decoration: none; color: oldlace;">Sitemap</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+                    
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script>
+     
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var errorUsername = document.getElementById("errorusername");
+        var errorPassword = document.getElementById("errorpassword");
+        
+        // Reset previous error messages
+        errorUsername.textContent = "";
+        errorPassword.textContent = "";
+
+
+        // Validate username (non-empty and at least 3 characters)
+        if (username.trim() === "") {
+            errorUsername.textContent = "Username is required.";
+            return false;
+        } else if (username.length < 3) {
+            errorUsername.textContent = "Username must be at least 3 characters long.";
+            return false;
+        }
+
+        // Validate password (non-empty)
+        if (password.trim() === "") {
+            errorPassword.textContent = "Password is required.";
+            return false;
+        }
+
+        return true; // Form is valid
+    }
+    
+    function redirectToDestination() {
+    
+        var destinationURL = "Contact.html";
+
+        
+        window.location.href = destinationURL;
+    }
+
+    
+    document.getElementById("redirectButton1").addEventListener("click", redirectToDestination);
+    document.getElementById("redirectButton2").addEventListener("click", redirectToDestination);
+    document.getElementById("redirectButton3").addEventListener("click", redirectToDestination);
+    document.getElementById("redirectButton4").addEventListener("click", redirectToDestination);
+    document.getElementById("redirectButton5").addEventListener("click", redirectToDestination);
+    document.getElementById("redirectButton5").addEventListener("click", redirectToDestination);
+   </script>
+</body>
+</html>
