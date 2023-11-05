@@ -1,0 +1,467 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy/Rent | SaNgeeTa InfrAstRucTures</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- Add Font Awesome CSS link -->
+    <style>
+        #btn{
+            float: right;
+        }
+        .navbar-nav{
+    
+    gap:30px;
+
+}
+
+.nav-link{
+    position: relative;
+    
+}
+.nav-link::before,
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(116, 111, 111);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+}
+
+.nav-link::before {
+    top: -1px;
+    transform-origin: left;
+}
+
+.nav-link::after {
+    bottom: 0px;
+    transform-origin: right;
+}
+
+.nav-link:hover::before,
+.nav-link:hover::after,
+.active::before,
+.active::after {
+    transform: scaleX(1);
+}
+
+#navbar.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+body {
+            background-color: #fffbfb;
+        }
+        
+        .jumbotron h1 {
+            font-size: 32px;
+        }
+       
+        .property-card {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        
+        .property-card h2 {
+            font-size: 24px;
+            color: #333;
+        }
+        .property-card p {
+            font-size: 16px;
+            color: #666;
+        }
+        .filter-button{
+            border-radius: 15px;
+            margin: 8px;
+        }
+        body {
+  position: relative;
+  min-height: 100vh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.details-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+}
+.property-card img{
+    border-radius: 15px;
+    width: 350px;
+    height: 250px;
+    
+}
+.modal1 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px; /* Set your desired width for the modal content */
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close1 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+        <a class="navbar-brand" href="index.html">
+            <img src="sang.jpg" alt="Logo" width="50" height="40" class="d-inline-block align-top rounded-circle">
+            <em>SaNgeeTa InfrAstRucTures</em>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="About.html">About</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="Buy.html">Buy/Rent</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Join.html">Join Us </a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="Contact.html">Contact Us</a>
+              </li>  
+              
+              <li class="nav-item" style="position: absolute; right: 10px;">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login/Sign Up</a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login/Sign Up</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Your login/signup form goes here -->
+                    <form onsubmit="return validateForm()">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                            <span id="errorusername" class="error"></span>   
+                          </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                            <span id="errorpassword" class="error"></span>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-secondary" style="position: absolute; left: 40%;">Login</button>
+                        <br>
+                        <br>
+                        <a class="link" href="#" style="position: absolute; left: 33%; text-decoration: none; color: grey;">Create a new Account!</a>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="jumbotron text-center">
+        <h2>Find a home you'll <i>love</i></h2>
+        <p>Discover <i>Your Dream</i> Property</p>
+    </div>
+   
+    <div class="filter-buttons" style="text-align: center;">
+        <button class="filter-button" data-type="all">ALL </button>
+        <button class="filter-button" data-type="1 BHK">1 BHK</button>
+        <button class="filter-button" data-type="2 BHK">2 BHK</button>
+        <button class="filter-button" data-type="3 BHK">3 BHK</button>
+        <button class="filter-button" data-type="4 BHK">4 BHK</button>
+        
+
+        <!-- Add more filter buttons for other property types -->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="property-card" data-type="1 BHK">
+                    <img src="https://img.staticmb.com/mbphoto/property/cropped_images/2023/Jul/15/Photo_h300_w450/68087977_2_1689360477371-787_300_450.jpg" alt="Property 1">
+                    <h2>Samanpura Apartment</h2>
+                    <p>Spacious 1-bedroom apartment with a garden and pool.</p>
+                    <p><strong>Price: ₹8,967/sqft (For Buy)</strong></p>
+                    
+                        <button class="btn btn-secondary view" >Buy</button>
+                        
+                        <button class="btn btn-secondary view1" >Rent</button>
+                        <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+              
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-card" data-type="1 BHK">
+                    <img src="https://img.staticmb.com/mbphoto/property/cropped_images/2022/Jan/25/Photo_h300_w450/57750057_1_am16_300_450.jpg" alt="Property 2" >
+                    <h2>Star Galaxy</h2>
+                    <p>1-bedroom apartment in the heart of the city.</p>
+                    <br>
+                    <p><strong>Price: ₹8,145/sqft (For Buy)</strong></p>
+                    <button class="btn btn-secondary view" >Buy</button>
+                        <button class="btn btn-secondary view1"  >Rent</button>
+                        <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-card" data-type="1 BHK">
+                    <img src="https://img.staticmb.com/mbphoto/property/cropped_images/2023/Oct/12/Photo_h300_w450/69535159_1_PropertyImage402-36269730051765_300_450.jpg" alt="Property 3" >
+                    <h2>Nohsa Apartment</h2>
+                    <p>1-bedroom apartment in the heart of the city.</p>
+                    <br>
+                    <p><strong>Price: ₹4,969/sqft (For Buy)</strong></p>
+                    <button class="btn btn-secondary view" >Buy</button>
+                    <button class="btn btn-secondary view1" >Rent</button>
+                    <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <div class="property-card" data-type="2 BHK">
+                        <img src="https://housing-images.n7net.in/01c16c28/028ed72bf20cb78d030ba25bece4858d/v0/medium/3_bhk_apartment-for-sale-hesag-Ranchi-outside_view.jpg" alt="Property 4" >
+                        <h2>Ganpati Kunj</h2>
+                        <p>2-bedroom apartment in the heart of the city.</p>
+                        <br>
+                        <br>
+                        <p><strong>Price: ₹3.65 K/sq.ft (For Buy)</strong></p>
+
+                        <button class="btn btn-secondary view" >Buy</button>
+                    <button class="btn btn-secondary view1" >Rent</button>
+                    <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-card" data-type="2 BHK">
+                    <img src="https://housing-images.n7net.in/01c16c28/531038644194385b1cb07c9eb8d0649a/v0/medium/1_bhk_apartment-for-sale-phulwari_sharif-Patna-others.jpg" alt="Property 5" >
+                    <h2>Sai Shree Balajee Homes</h2>
+                    <p>Specious 1 BHK newly constructed flat available at very prime location of anishabad area </p>
+                    <p><strong>Price: ₹4.65 K/sq.ft (For Buy)</strong></p>
+                    <button class="btn btn-secondary view" >Buy</button>
+                    <button class="btn btn-secondary view1" >Rent</button>
+                    <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-card" data-type="2 BHK">
+                    <img src="https://housing-images.n7net.in/01c16c28/554c0b2a891bc58d1b6d4c1864c28b53/v0/large/2_bhk_apartment-for-sale-phulwari_sharif-Patna-others.jpg" alt="Property 6" >
+                    <h2>Great Patna</h2>
+                    <p>Best 2 BHK Flat for modern-day lifestyle is now available for sale.</p>
+                    <br>
+                    <p><strong>Price: ₹22.04 K/sq.ft (For Buy)</strong></p>
+                    <button class="btn btn-secondary view" >Buy</button>
+                    <button class="btn btn-secondary view1" >Rent</button>
+                    <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-card" data-type="3 BHK">
+                    <img src="https://housing-images.n7net.in/01c16c28/5bd17f8052714a9491a0d7366dc5b973/v0/large/3_bhk_apartment-for-sale-argora-Ranchi-others.jpg" alt="Property 7" >
+                    <h2>Aashiyana</h2>
+                    <p>This 3 BHK Flat is perfect for a modern-day lifestyle.</p>
+                    <p><strong>Price: ₹4.73 K/sq.ft (For Buy)</strong></p>
+                    <button class="btn btn-secondary view" >Buy</button>
+                    <button class="btn btn-secondary view1" >Rent</button>
+                    <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="property-card" data-type="4 BHK">
+                    <img src="https://housing-images.n7net.in/01c16c28/65fdfe74122b4c2367a7959f49302a0c/v0/large/3_bhk_apartment-for-sale-gandhajore-Bokaro+Steel+City-others.jpg" alt="Property 8" >
+                    <h2>Aashiyana Heritage</h2>
+                    <p>This will really complete all the reamining essentials of your Dream House.</p>
+                    <p><strong>Price: 3.41k/sq.ft (For Buy)</strong></p>
+                    <button class="btn btn-secondary view" >Buy</button>
+                    <button class="btn btn-secondary view1" >Rent</button>
+                     <button class="btn btn-secondary modal-link" id="btn" data-message="Message 1">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal1" id="modal1">
+        <div class="modal-content1">
+            <span class="close1">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <footer class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                    <p style="color: white"><em>SaNgeeTa InfrAstRucTures</em> &copy; 2023</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <p style="color: white">&copy; 2023 Sangeeta Properties. All rights reserved. | <a href="#" style="text-decoration: none; color: oldlace;">Disclaimer</a> | <a href="#" style="text-decoration: none; color: oldlace;">Sitemap</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+                    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+           window.onscroll = function() {
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) { 
+        navbar.classList.add("sticky");
+    } else {
+        navbar.classList.remove("sticky");
+    }
+};
+
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var errorUsername = document.getElementById("errorusername");
+        var errorPassword = document.getElementById("errorpassword");
+        
+        
+        errorUsername.textContent = "";
+        errorPassword.textContent = "";
+
+
+        
+        if (username.trim() === "") {
+            errorUsername.textContent = "Username is required.";
+            return false;
+        } else if (username.length < 3) {
+            errorUsername.textContent = "Username must be at least 3 characters long.";
+            return false;
+        }
+
+        // Validate password (non-empty)
+        if (password.trim() === "") {
+            errorPassword.textContent = "Password is required.";
+            return false;
+        }
+
+        return true; // Form is valid
+    }
+    
+   
+    $('.filter-button').on('click', function () {
+            var filterType = $(this).data('type');
+            $('.property-card').hide();
+            if (filterType === 'all') {
+                $('.property-card').show();
+            } else {
+                $('.property-card[data-type="' + filterType + '"]').show();
+            }
+        });
+        $('.view-details-button').on('click', function () {
+            // Get the data-details-id attribute to identify which details box to show
+            var detailsBoxId = $(this).data('details-id');
+            $('.details-box').hide();
+            $('#' + detailsBoxId).show();
+        });
+
+        
+
+$(document).ready(function() { 
+    $('.view').click(function() {
+        // Show a pop-up message
+        alert('Firstly Check Out All details Like Areas and all by view Details.');
+        alert('We are Redirecting you to contact page.');
+    });
+});
+
+
+$(document).ready(function() {
+    $('.view1').click(function() {
+        // Show a pop-up message
+        alert('Firstly Check Out All details Like Pricing and all by view Details.');
+        alert('We are Redirecting you to Payment page.');
+    });
+});
+
+
+const modal = document.getElementById("modal1");
+const modalMessage = document.getElementById("modal-message");
+
+
+function showModal(message) {
+    modal.style.display = "block";
+    modalMessage.textContent = "Discription   for Buy: Area = 864 sqft , Booking Amount= Rs.10000, Status: Constructed.., Contact our customer care for booking from contact page. For Rent: Price=9000 per month , Fully Furnished, Booking Amount=20% of Rent.  " ;
+    
+}
+
+
+
+document.querySelector(".close1").addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+// Add click event listeners to all elements with the "modal-link" class
+const modalLinks = document.querySelectorAll(".modal-link");
+modalLinks.forEach(link => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const message = link.getAttribute("data-message");
+        showModal(message);
+    });
+});
+   </script>
+</body>
+</html>
